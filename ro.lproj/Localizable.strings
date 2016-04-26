@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  BulzBy
+
+  Created by Seby Feier on 22/04/16.
+  Copyright © 2016 Seby Feier. All rights reserved.
+*/
+
+"Locations" = "Locatii";
+"Error" = "Eroare";
+"My Account" = "Contul meu";
+"Enter Review" = "";
+"Comments" = "Comentarii";
+"Register" = "Inregistrare";
+"Reset Password" = "Resetare Parola";
+"My Profile" = "Profilul meu";
+"I agree with Terms and Conditions..." = "Sunt de acord cu Termenii și Condițiile...";
+"Terms and Conditions..." = "Termenii și Condițiile...";
+"Username" = "Nume";
+"E-mail" = "E-mail";
+"You have to agree with the terms and conditions" = "Trebuie să fiți de acord cu termenii și condițiile";
+"Insert phone number" = "Introduceti numarul de telefon";
+"Passwords don't match" = "Parolele nu coincid";
+"Password too short" = "Parola este prea scurtă";
+"Invalid email" = "Email invalid";
+"Insert username" = "Introduceți numele";
+"My account" = "Contul meu";
+"Password" = "Parola";
+"Wrong password" = "Parola gresita";
+

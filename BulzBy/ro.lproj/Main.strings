@@ -1,0 +1,180 @@
+
+/* Class = "UITextField"; placeholder = "Adresă de email"; ObjectID = "0iN-we-COZ"; */
+"0iN-we-COZ.placeholder" = "Adresă de email";
+
+/* Class = "UIButton"; normalTitle = "Parolă uitată"; ObjectID = "0p4-DO-MCg"; */
+"0p4-DO-MCg.normalTitle" = "Parolă uitată";
+
+/* Class = "UIButton"; normalTitle = "Inregistrare user"; ObjectID = "1bu-w9-Bna"; */
+"1bu-w9-Bna.normalTitle" = "Inregistrare user";
+
+/* Class = "UILabel"; text = "Environment"; ObjectID = "3eq-V2-NE5"; */
+"3eq-V2-NE5.text" = "Confort";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "3ic-Bn-UmG"; */
+"3ic-Bn-UmG.placeholder" = "Nume";
+
+/* Class = "UILabel"; text = "RESTAURANT TABLE"; ObjectID = "4CH-OY-VY2"; */
+"4CH-OY-VY2.text" = "RESTAURANT TABLE";
+
+/* Class = "UIButton"; normalTitle = "Ieșire cont"; ObjectID = "57u-1B-09y"; */
+"57u-1B-09y.normalTitle" = "Ieșire cont";
+
+/* Class = "UITextView"; text = "Comments !!!!"; ObjectID = "5ym-Ak-WlN"; */
+"5ym-Ak-WlN.text" = "Comentarii";
+
+/* Class = "UIButton"; normalTitle = "Location"; ObjectID = "A0u-DX-cvq"; */
+"A0u-DX-cvq.normalTitle" = "Locatie";
+
+/* Class = "UIButton"; normalTitle = "Sunt de acord cu Condițiile de utilizare"; ObjectID = "AJb-kZ-sNd"; */
+"AJb-kZ-sNd.normalTitle" = "Sunt de acord cu Condițiile de utilizare";
+
+/* Class = "UIButton"; normalTitle = "Contact"; ObjectID = "AWb-be-yfF"; */
+"AWb-be-yfF.normalTitle" = "Contact";
+
+/* Class = "UILabel"; text = "DATE"; ObjectID = "BXt-Kb-sBg"; */
+"BXt-Kb-sBg.text" = "DATA";
+
+/* Class = "UILabel"; text = "Review"; ObjectID = "CLO-GT-4MG"; */
+"CLO-GT-4MG.text" = "Review";
+
+/* Class = "UITextField"; placeholder = "Parolă nouă"; ObjectID = "D9e-du-3yR"; */
+"D9e-du-3yR.placeholder" = "Parolă nouă";
+
+/* Class = "UILabel"; text = "Blog"; ObjectID = "DIa-hx-v8q"; */
+"DIa-hx-v8q.text" = "Blog";
+
+/* Class = "UILabel"; text = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230"; ObjectID = "DPf-8b-vfl"; */
+"DPf-8b-vfl.text" = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "DdR-Eo-99I"; */
+"DdR-Eo-99I.normalTitle" = "Autentificare";
+
+/* Class = "UIButton"; normalTitle = "Profilul meu"; ObjectID = "E8o-FG-7hd"; */
+"E8o-FG-7hd.normalTitle" = "Profilul meu";
+
+/* Class = "UILabel"; text = "JEFF HARDY"; ObjectID = "F0r-80-bxl"; */
+"F0r-80-bxl.text" = "JEFF HARDY";
+
+/* Class = "UILabel"; text = "RESTAURANT TABLE"; ObjectID = "GlF-gq-ZtS"; */
+"GlF-gq-ZtS.text" = "RESTAURANT TABLE";
+
+/* Class = "UILabel"; text = "Book The Table"; ObjectID = "Gxc-uX-I6S"; */
+"Gxc-uX-I6S.text" = "Rezerva masa";
+
+/* Class = "UITextField"; placeholder = "Parola din nou"; ObjectID = "IaI-zp-ZQQ"; */
+"IaI-zp-ZQQ.placeholder" = "Parola din nou";
+
+/* Class = "UILabel"; text = "Food"; ObjectID = "Jem-WS-sDs"; */
+"Jem-WS-sDs.text" = "Mancare";
+
+/* Class = "UILabel"; text = "Book The Table"; ObjectID = "Jtk-b2-kWF"; */
+"Jtk-b2-kWF.text" = "Rezerva masa";
+
+/* Class = "UIButton"; normalTitle = "My Bookings"; ObjectID = "O4b-bq-gtn"; */
+"O4b-bq-gtn.normalTitle" = "Rezervarile mele";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Qia-tA-aHD"; */
+"Qia-tA-aHD.text" = "Label";
+
+/* Class = "UILabel"; text = "Review"; ObjectID = "Qk0-qZ-KMJ"; */
+"Qk0-qZ-KMJ.text" = "Review";
+
+/* Class = "UILabel"; text = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230"; ObjectID = "R8p-5A-9El"; */
+"R8p-5A-9El.text" = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230";
+
+/* Class = "UILabel"; text = "RESTAURANT TABLE"; ObjectID = "S4N-D3-GPu"; */
+"S4N-D3-GPu.text" = "RESTAURANT TABLE";
+
+/* Class = "UIButton"; normalTitle = "Resetare parolă"; ObjectID = "TIn-EB-g9p"; */
+"TIn-EB-g9p.normalTitle" = "Resetare parolă";
+
+/* Class = "UILabel"; text = "sau"; ObjectID = "VCe-ny-36I"; */
+"VCe-ny-36I.text" = "sau";
+
+/* Class = "UITextField"; placeholder = "Nume complet"; ObjectID = "WdY-1c-4iC"; */
+"WdY-1c-4iC.placeholder" = "Nume complet";
+
+/* Class = "UILabel"; text = "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel"; ObjectID = "XlH-8Q-Oby"; */
+"XlH-8Q-Oby.text" = "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "YR8-wN-b9D"; */
+"YR8-wN-b9D.text" = "Descriere";
+
+/* Class = "UILabel"; text = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230"; ObjectID = "Yqz-ge-Syj"; */
+"Yqz-ge-Syj.text" = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230";
+
+/* Class = "UILabel"; text = "Cancel"; ObjectID = "ZKa-hw-t6B"; */
+"ZKa-hw-t6B.text" = "Anuleaza";
+
+/* Class = "UILabel"; text = "Service"; ObjectID = "ZOL-lM-8F2"; */
+"ZOL-lM-8F2.text" = "Servicii";
+
+/* Class = "UILabel"; text = "Review"; ObjectID = "aEu-E9-mMg"; */
+"aEu-E9-mMg.text" = "Review";
+
+/* Class = "UIButton"; normalTitle = "Modifică"; ObjectID = "bBM-aE-O4n"; */
+"bBM-aE-O4n.normalTitle" = "Modifică";
+
+/* Class = "UITextField"; placeholder = "Confirmă parolă"; ObjectID = "bCY-qq-jb7"; */
+"bCY-qq-jb7.placeholder" = "Confirmă parolă";
+
+/* Class = "UILabel"; text = "Submit"; ObjectID = "dLJ-ZP-kcJ"; */
+"dLJ-ZP-kcJ.text" = "Trimite";
+
+/* Class = "UILabel"; text = "Book Now"; ObjectID = "dfG-HR-fL0"; */
+"dfG-HR-fL0.text" = "Rezerva";
+
+/* Class = "UILabel"; text = "Book The Table"; ObjectID = "eWJ-xV-E2e"; */
+"eWJ-xV-E2e.text" = "Rezerva masa";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "erX-sQ-9bU"; */
+"erX-sQ-9bU.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Telefon"; ObjectID = "ha8-me-WPD"; */
+"ha8-me-WPD.placeholder" = "Telefon";
+
+/* Class = "UIButton"; normalTitle = "Log in with Facebook"; ObjectID = "i1C-Ro-SbI"; */
+"i1C-Ro-SbI.normalTitle" = "Autentificare cu Facebook";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "idt-09-21I"; */
+"idt-09-21I.placeholder" = "E-mail";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "iww-VP-PEk"; */
+"iww-VP-PEk.placeholder" = "E-mail";
+
+/* Class = "UITabBarItem"; title = "Cont"; ObjectID = "j8l-9S-MGd"; */
+"j8l-9S-MGd.title" = "Cont";
+
+/* Class = "UILabel"; text = "Review"; ObjectID = "pmh-mG-CF5"; */
+"pmh-mG-CF5.text" = "Review";
+
+/* Class = "UILabel"; text = "My Bookings"; ObjectID = "rKQ-pc-g2f"; */
+"rKQ-pc-g2f.text" = "Rezervarile mele";
+
+/* Class = "UITextField"; placeholder = "Parola"; ObjectID = "u2X-fe-yh5"; */
+"u2X-fe-yh5.placeholder" = "Parola";
+
+/* Class = "UILabel"; text = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230"; ObjectID = "uAd-iD-uR7"; */
+"uAd-iD-uR7.text" = "Udhana - Sachin Highway, G.I.D.C. Naka, Sachin, Udhna, Surat, Gujarat 394230";
+
+/* Class = "UITextField"; placeholder = "Adresa de email validă"; ObjectID = "uIN-Ln-o0u"; */
+"uIN-Ln-o0u.placeholder" = "Adresa de email validă";
+
+/* Class = "UIButton"; normalTitle = "Înregistrare"; ObjectID = "ubu-UX-uhJ"; */
+"ubu-UX-uhJ.normalTitle" = "Înregistrare";
+
+/* Class = "UITextField"; placeholder = "Parolă (minim 5 caractere)"; ObjectID = "vEp-MS-9Gm"; */
+"vEp-MS-9Gm.placeholder" = "Parolă (minim 5 caractere)";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "wdu-nO-rNg"; */
+"wdu-nO-rNg.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "YOUR EXPERIENCE"; ObjectID = "xJq-OU-4rg"; */
+"xJq-OU-4rg.text" = "Experienta ta";
+
+/* Class = "UILabel"; text = "TIME"; ObjectID = "zHK-Wu-7Ik"; */
+"zHK-Wu-7Ik.text" = "TIMP";
+
+/* Class = "UITextView"; text = "Enter Review"; ObjectID = "zUU-vr-ryy"; */
+"zUU-vr-ryy.text" = "Adauga Review";
