@@ -72,6 +72,8 @@
         self.submitLabel.hidden = NO;
         [UIView animateWithDuration:0.25 animations:^{
             self.addReviewTopConstraint.constant = 0;
+            self.cancelLabelAlignment.constant = 40;
+            self.cancelButtonAlignment.constant = 40;
             [self.view layoutIfNeeded];
         }];
     } else {
@@ -150,6 +152,8 @@
     self.submitButton.hidden = YES;
     [UIView animateWithDuration:0.25 animations:^{
         self.addReviewTopConstraint.constant = 0;
+        self.cancelLabelAlignment.constant = 0;
+        self.cancelButtonAlignment.constant = 0;
         [self.view layoutIfNeeded];
     }];
 }

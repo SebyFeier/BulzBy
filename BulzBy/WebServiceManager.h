@@ -34,4 +34,12 @@ typedef void(^ArrayAndErrorCompletionBlock)(NSArray *array, NSError *error);
 - (void)reviewCompanyWithApiToken:(NSString *)apiToken withCompanyId:(NSString *)companyId description:(NSString *)description starFood:(NSNumber *)starFood starService:(NSNumber *)starService starEnvironment:(NSNumber *)starEnvironment withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
 
 - (void)getCompanyInformationWithId:(NSString *)restaurantId withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
+- (void)loginWithFacebookId:(NSString *)facebookId email:(NSString *)email name:(NSString *)name image:(NSString *)image withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
+- (void)editUserWithId:(NSString *)userId username:(NSString *)name andPassword:(NSString *)password andApiToken:(NSString *)apiToken andEmail:(NSString *)email withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
+- (void)contactOwnerWithUsername:(NSString *)username email:(NSString *)email phone:(NSString *)phone message:(NSString *)message withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
+
 @end

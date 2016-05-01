@@ -122,6 +122,7 @@ NSString *const WebServiceUrl = @"http://restaurantfinder.boxnets.com/";
     }
     if (password) {
         [user setObject:password forKey:@"password"];
+        [user setObject:password forKey:@"password_confirmation"];
 //        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&password=%@",password]];
 
     }
@@ -306,6 +307,128 @@ NSString *const WebServiceUrl = @"http://restaurantfinder.boxnets.com/";
     [operation start];
 }
 
+- (void)loginWithFacebookId:(NSString *)facebookId email:(NSString *)email name:(NSString *)name image:(NSString *)image withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+//    NSString *urlString = @"facebook";
+    NSString * language = [[[[NSLocale preferredLanguages] objectAtIndex:0] componentsSeparatedByString:@"-"] firstObject];
+    NSString *urlString = [NSString stringWithFormat:@"users/auth/facebook/callback.json"];
+    NSURL *url = [NSURL URLWithString:WebServiceUrl];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:language forKey:@"api_language"];
+    if (facebookId) {
+        [parameters setObject:facebookId forKey:@"uid"];
+        //        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&email=%@",email]];
+        
+    }
+    NSMutableDictionary *user = [[NSMutableDictionary alloc] init];
+    if (email) {
+        [user setObject:email forKey:@"email"];
+        //        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&email=%@",email]];
+        
+    }
+    if (name) {
+        [user setObject:name forKey:@"name"];
+    }
+    [parameters setObject:user forKey:@"info"];
+    
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+                                                            path:urlString
+                                                      parameters:parameters];
+    NSLog(@"URL %@",request.URL);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        self.userInfo = JSON;
+        completionBlock(JSON, nil);
+        NSLog(@"%@",JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
+}
+
+- (void)editUserWithId:(NSString *)userId username:(NSString *)name andPassword:(NSString *)password andApiToken:(NSString *)apiToken andEmail:(NSString *)email withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+    NSString * language = [[[[NSLocale preferredLanguages] objectAtIndex:0] componentsSeparatedByString:@"-"] firstObject];
+    NSString *urlString = [NSString stringWithFormat:@"users.json"];
+    NSURL *url = [NSURL URLWithString:WebServiceUrl];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:language forKey:@"api_language"];
+    if (apiToken) {
+        [parameters setObject:apiToken forKey:@"api_token"];
+        //        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&email=%@",email]];
+        
+    }
+    NSMutableDictionary *user = [[NSMutableDictionary alloc] init];
+    if (email) {
+        [user setObject:email forKey:@"email"];
+        //        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&email=%@",email]];
+        
+    }
+    if (name) {
+        [user setObject:name forKey:@"name"];
+    }
+    if (password) {
+        [user setObject:password forKey:@"password"];
+        [user setObject:password forKey:@"password_confirmation"];
+    }
+    [parameters setObject:user forKey:@"user"];
+    
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT"
+                                                            path:urlString
+                                                      parameters:parameters];
+    NSLog(@"URL %@",request.URL);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //        self.userInfo = JSON;
+        completionBlock(JSON, nil);
+        NSLog(@"%@",JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
+}
+
+- (void)contactOwnerWithUsername:(NSString *)username email:(NSString *)email phone:(NSString *)phone message:(NSString *)message withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+    NSString * language = [[[[NSLocale preferredLanguages] objectAtIndex:0] componentsSeparatedByString:@"-"] firstObject];
+    NSString *urlString = [NSString stringWithFormat:@"pages/post_contact.json"];
+    NSURL *url = [NSURL URLWithString:WebServiceUrl];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:language forKey:@"api_language"];
+    NSMutableDictionary *applicant = [[NSMutableDictionary alloc] init];
+    if (email) {
+        [applicant setObject:email forKey:@"email"];
+        //        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&email=%@",email]];
+        
+    }
+    if (username) {
+        [applicant setObject:username forKey:@"name"];
+    }
+    if (phone) {
+        [applicant setObject:phone forKey:@"phone"];
+    }
+    if (message) {
+        [applicant setObject:message forKey:@"message"];
+    }
+    [parameters setObject:applicant forKey:@"applicant"];
+    
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+                                                            path:urlString
+                                                      parameters:parameters];
+    NSLog(@"URL %@",request.URL);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //        self.userInfo = JSON;
+        completionBlock(JSON, nil);
+        NSLog(@"%@",JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
+}
 
 
 @end

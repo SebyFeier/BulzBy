@@ -22,6 +22,7 @@
     NSArray *imagesArray;
     CGFloat nextHeight;
     CGFloat infoTotalHeight;
+    CGFloat scheduleHeight;
 }
 
 @end
@@ -81,7 +82,7 @@
         if ([location[@"address"] length]) {
             UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 10, CGRectGetWidth(view.frame) - 20, 20)];
             addressLabel.numberOfLines = 0;
-            addressLabel = [addressLabel createLabelWithImage:@"address_map_icon" andTitle:location[@"address"] isPortrait:YES];
+            addressLabel = [addressLabel createLabelWithImage:@"address_map_icon" andTitle:location[@"address"] isSquared:YES];
             CGRect descriptionFrame = addressLabel.frame;
             
             float descriptionHeight = [self getHeightForText:addressLabel.text
@@ -99,22 +100,22 @@
         //
         if ([location[@"phone"] length]) {
         UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight+ 15, CGRectGetWidth(view.frame) - 20, 20)];
-        phoneLabel = [phoneLabel createLabelWithImage:@"phone512" andTitle:location[@"phone"] isPortrait:YES];
+        phoneLabel = [phoneLabel createLabelWithImage:@"phone512" andTitle:location[@"phone"] isSquared:YES];
         [view addSubview:phoneLabel ];
             currentHeight += 20;
         }
         if ([location[@"email"] length]) {
-        UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
-        emailLabel = [emailLabel createLabelWithImage:@"mail512" andTitle:location[@"email"] isPortrait:NO];
-        [view addSubview:emailLabel];
+            UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
+            emailLabel = [emailLabel createLabelWithImage:@"mail512" andTitle:location[@"email"] isSquared:NO];
+            [view addSubview:emailLabel];
             currentHeight += 20;
         }
-        if ([location[@"website"] length]) {
-        UILabel *scheduleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
-        scheduleLabel = [scheduleLabel createLabelWithImage:@"www512" andTitle:@"" isPortrait:NO];
-        [view addSubview:scheduleLabel];
-            currentHeight += 20;
-        }
+//        if ([location[@"website"] length]) {
+//        UILabel *scheduleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
+//        scheduleLabel = [scheduleLabel createLabelWithImage:@"schedule512" andTitle:@"" isPortrait:NO];
+//        [view addSubview:scheduleLabel];
+//            currentHeight += 20;
+//        }
         view.frame = CGRectMake(0, (self.descriptionViewHeight.constant > 0)?CGRectGetMaxY(self.descriptionView.frame) + (nextHeight * locationIndex) + 10:nextHeight * locationIndex + locationIndex>0?20:0, CGRectGetWidth(self.mainScrollView.frame), currentHeight + 40);
 //        view.frame = CGRectMake(0, (self.descriptionViewHeight.constant > 0)?CGRectGetMaxY(self.descriptionView.frame) + (nextHeight * locationIndex) + 10:CGRectGetMaxY(self.imageScrollView.frame) + (nextHeight * locationIndex) + 20, CGRectGetWidth(self.mainScrollView.frame), CGRectGetHeight(nameLabel.frame) + CGRectGetHeight(addressLabel.frame) + CGRectGetHeight(phoneLabel.frame) + CGRectGetHeight(emailLabel.frame) + CGRectGetHeight(scheduleLabel.frame) + 40);
         nextHeight = CGRectGetHeight(view.frame) + 10;
@@ -122,6 +123,56 @@
         [self.mainScrollView addSubview:view];
     }
     [self.mainScrollView bringSubviewToFront:self.backButton];
+    if ([self.restaurantInfo[@"schedule_display"] count] > 0) {
+        scheduleHeight = 0;
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.descriptionViewHeight.constant + infoTotalHeight + 10, CGRectGetWidth(self.mainScrollView.frame), scheduleHeight)];
+        view.backgroundColor = [UIColor whiteColor];
+        
+        UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, CGRectGetWidth(view.frame) - 20, 20)];
+//        nameLabel.text = [NSString stringWithFormat:@"%@", location[@"name"]];
+        nameLabel.text = NSLocalizedString(@"Schedule", nil);
+        nameLabel.font = [UIFont boldSystemFontOfSize:17];
+        [view addSubview:nameLabel];
+        scheduleHeight += 20;
+        for (NSDictionary *schedule in self.restaurantInfo[@"schedule_display"]) {
+            NSString *dayString;
+            NSInteger day = [schedule[@"day"] integerValue];
+            switch (day) {
+                case 1:
+                    dayString = NSLocalizedString(@"Monday", nil);
+                    break;
+                case 2:
+                    dayString = NSLocalizedString(@"Tuesday", nil);
+                    break;
+                case 3:
+                    dayString = NSLocalizedString(@"Wednesday", nil);
+                    break;
+                case 4:
+                    dayString = NSLocalizedString(@"Thursday", nil);
+                    break;
+                case 5:
+                    dayString = NSLocalizedString(@"Friday", nil);
+                    break;
+                case 6:
+                    dayString = NSLocalizedString(@"Saturday", nil);
+                    break;
+                case 0:
+                    dayString = NSLocalizedString(@"Sunday", nil);
+                    break;
+                default:
+                    break;
+            }
+            UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, scheduleHeight + 20, CGRectGetWidth(view.frame) - 20, 20)];
+            emailLabel = [emailLabel createLabelWithImage:@"schedule512" andTitle:[NSString stringWithFormat:@"%@: %@", dayString, schedule[@"hours"]] isSquared:YES];
+            [view addSubview:emailLabel];
+            scheduleHeight += 20;
+
+        }
+        view.frame = CGRectMake(0, self.descriptionViewHeight.constant + infoTotalHeight + 10, CGRectGetWidth(self.mainScrollView.frame), scheduleHeight + 20);
+        
+        
+        [self.mainScrollView addSubview:view];
+    }
     
     
     if (!self.galleryCollectionView) {
@@ -149,7 +200,7 @@
             self.imagesView = [[UIView alloc] initWithFrame:CGRectZero];
             self.imagesView.backgroundColor = [UIColor whiteColor];
 //            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + infoTotalHeight + 25, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
-            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + 35, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
+            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + scheduleHeight + 65, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
         }
         if (self.imagesView) {
             UILabel *photosLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, CGRectGetWidth(self.imagesView.frame) - 20, 20)];
@@ -168,7 +219,7 @@
     
     
     
-    self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.mainScrollView.frame),self.descriptionViewHeight.constant + infoTotalHeight + CGRectGetHeight(self.imagesView.frame) + 20);
+    self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.mainScrollView.frame),self.descriptionViewHeight.constant + infoTotalHeight + CGRectGetHeight(self.imagesView.frame) + scheduleHeight + 40);
     
     nextHeight = 0;
 
@@ -188,6 +239,7 @@
     self.imageScrollView.userInteractionEnabled = NO;
     self.pageControl.hidden = YES;
     [self.imageScrollView setContentSize:CGSizeMake(self.view.frame.size.width * [imagesArray count], 126)];
+    self.descriptionLabel.textAlignment = NSTextAlignmentJustified;
 }
 
 

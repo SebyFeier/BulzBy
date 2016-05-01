@@ -20,5 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *reviewTextView;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UILabel *submitLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelButtonAlignment;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cancelLabelAlignment;
 
 @end

@@ -27,4 +27,19 @@
 "My account" = "Contul meu";
 "Password" = "Parola";
 "Wrong password" = "Parola gresita";
-
+"Contact" = "Contact";
+"Phone" = "Telefon";
+"Your Message" = "Mesajul tau";
+"Please insert your username" = "Introduceti numele";
+"Please insert your email" = "Introduceti emailul";
+"Please insert your phone number" = "Introduceti numarul de telefon";
+"Send message" = "Trimite mesajul";
+"You will be contacted soon" = "Veți fi contactat in curand";
+"Schedule" = "Orar";
+"Monday" = "Luni";
+"Tuesday" = "Marti";
+"Wednesday" = "Miercuri";
+"Thursday" = "Joi";
+"Friday" = "Vineri";
+"Saturday" = "Sambata";
+"Sunday" = "Duminica";

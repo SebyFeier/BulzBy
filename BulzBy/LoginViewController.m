@@ -141,37 +141,6 @@
                     [userDefaults setObject:[userDefaults objectForKey:@"id_user"] forKey:@"id_user"];
                     //                    [userDefaults setObject:[userDefaults objectForKey:@"userInfo"] forKey:@"userInfo"];
                     [userDefaults synchronize];
-                    //                    self.accountUsernameTextField.text = dictionary[@"nume"];
-                    //                    self.accountTelephoneTextField.text = dictionary[@"telefon"];
-                    //                    self.accountPasswordTextField.text = @"";
-                    //                    self.accountConfirmPasswordTextField.text = @"";
-                    //                    self.usernameLabel.text = dictionary[@"nume"];
-                    //
-                    //                    if (dictionary[@"avatar"] && ![dictionary[@"avatar"] isEqual:[NSNull null]]) {
-                    //                        [self.userImageView hnk_setImageFromURL:[NSURL URLWithString:dictionary[@"avatar"]]];
-                    //                    } else {
-                    //                        [self.userImageView setImage:[UIImage imageNamed:@"no-image"]];
-                    //                    }
-                    //
-                    //                    NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
-                    //                    NSString *registeredDateString = dictionary[@"data_inreg"];
-                    //                    [dateFormatter2 setDateFormat:@"yyyy-MM-dd"];
-                    //                    NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
-                    //
-                    //                    [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
-                    //                    NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
-                    //                    self.registeredLabel.text = [NSString stringWithFormat:@"Inregistrat pe %@",newDateString];
-                    //                    if ([dictionary objectForKey:@"ultima_logare"] && ![[dictionary objectForKey:@"ultima_logare"] isEqual:[NSNull null]]) {
-                    //
-                    //                        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
-                    //                        NSString *registeredDateString = [dictionary objectForKey:@"ultima_logare"];
-                    //                        [dateFormatter2 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
-                    //                        NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
-                    //
-                    //                        [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
-                    //                        NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
-                    //                        self.onlineLabel.text = [NSString stringWithFormat:@"Online pe %@", newDateString];
-                    //                    }
                     [self.loginView setHidden:YES];
                     [self.accountView setHidden:NO];
                 } else {
@@ -182,6 +151,63 @@
             }
         }];
         
+    } else if ([userDefaults objectForKey:@"facebookEmail"]) {
+        self.loginView.hidden = YES;
+        self.accountView.hidden = NO;
+        [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+        [[WebServiceManager sharedInstance] loginWithFacebookId:[userDefaults objectForKey:@"facebookId"] email:[userDefaults objectForKey:@"facebookEmail"] name:[userDefaults objectForKey:@"facebookName"] image:[userDefaults objectForKey:@"facebookImage"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+            [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+            if (!error) {
+                if (!dictionary[@"failed"]) {
+                    userInfo = dictionary;
+                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                    [userDefaults setObject:[userDefaults objectForKey:@"facebookEmail"] forKey:@"facebookEmail"];
+                    [userDefaults setObject:[userDefaults objectForKey:@"facebookName"] forKey:@"facebookName"];
+                    [userDefaults setObject:[userDefaults objectForKey:@"facebookId"] forKey:@"facebookId"];
+                    [userDefaults setObject:[userDefaults objectForKey:@"facebookImage"] forKey:@"facebookImage"];
+                    [userDefaults setObject:[userDefaults objectForKey:@"id_user"] forKey:@"id_user"];
+                    
+                    [userDefaults synchronize];
+//                    self.emailTextField.text = @"";
+//                    self.passwordTextField.text = @"";
+//                    self.accountUsernameTextField.text = dictionary[@"nume"];
+//                    self.accountTelephoneTextField.text = dictionary[@"telefon"];
+//                    self.accountPasswordTextField.text = @"";
+//                    self.accountConfirmPasswordTextField.text = @"";
+//                    self.usernameLabel.text = dictionary[@"nume"];
+//                    if (dictionary[@"avatar"] && ![dictionary[@"avatar"] isEqual:[NSNull null]]) {
+//                        [self.userImageView hnk_setImageFromURL:[NSURL URLWithString:dictionary[@"avatar"]]];
+//                    } else {
+//                        [self.userImageView setImage:[UIImage imageNamed:@"no-image"]];
+//                    }
+//                    NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
+//                    NSString *registeredDateString = dictionary[@"data_inreg"];
+//                    [dateFormatter2 setDateFormat:@"yyyy-MM-dd"];
+//                    NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
+//                    
+//                    [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
+//                    NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
+//                    self.registeredLabel.text = [NSString stringWithFormat:@"Inregistrat pe %@",newDateString];            if ([dictionary objectForKey:@"ultima_logare"] && ![[dictionary objectForKey:@"ultima_logare"] isEqual:[NSNull null]]) {
+//                        
+//                        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc]init];
+//                        NSString *registeredDateString = [dictionary objectForKey:@"ultima_logare"];
+//                        [dateFormatter2 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
+//                        NSDate *registeredDate = [dateFormatter2 dateFromString:registeredDateString];
+//                        
+//                        [dateFormatter2 setDateFormat:@"dd MMM yyyy"];
+//                        NSString *newDateString = [dateFormatter2 stringFromDate:registeredDate];
+//                        self.onlineLabel.text = [NSString stringWithFormat:@"Online pe %@", newDateString];
+//                    }
+                    
+                    
+                    //            self.registeredLabel.text
+                    [self.loginView setHidden:YES];
+                    [self.accountView setHidden:NO];
+                } else {
+                    [[[UIAlertView alloc] initWithTitle:@"Eroare" message:dictionary[@"failed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                }
+            }
+        }];
     } else {
         self.accountView.hidden = YES;
         self.loginView.hidden = NO;
@@ -281,6 +307,58 @@
 }
 
 - (IBAction)facebookLoginButtonTapped:(id)sender {
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login logOut];
+    [login
+     logInWithReadPermissions: @[@"public_profile", @"email"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             if ([FBSDKAccessToken currentAccessToken]) {
+                 [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,picture.width(100).height(100), email"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result2, NSError *error) {
+                     if (!error) {
+                         NSString *nameOfLoginUser = [result2 valueForKey:@"name"];
+                         NSString *imageStringOfLoginUser = [[[result2 valueForKey:@"picture"] valueForKey:@"data"] valueForKey:@"url"];
+                         NSString *email = [result2 objectForKey:@"email"];
+                         NSString *facebookId = [result2 objectForKey:@"id"];
+                         [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+                         [[WebServiceManager sharedInstance] loginWithFacebookId:facebookId email:email name:nameOfLoginUser image:imageStringOfLoginUser withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                             [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+                             if (!error) {
+                                 if (!dictionary[@"failed"]) {
+                                     userInfo = dictionary;
+                                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                                     [userDefaults setObject:email forKey:@"email"];
+                                     [userDefaults setObject:email forKey:@"facebookEmail"];
+                                     [userDefaults setObject:nameOfLoginUser forKey:@"facebookName"];
+                                     [userDefaults setObject:facebookId forKey:@"facebookId"];
+                                     [userDefaults setObject:imageStringOfLoginUser forKey:@"facebookImage"];
+                                     [userDefaults setObject:dictionary[@"id_user"] forKey:@"id_user"];
+                                     
+                                     [userDefaults synchronize];
+                                     self.emailTextField.text = @"";
+                                     self.passwordTextField.text = @"";
+                                     [self.loginView setHidden:YES];
+                                     [self.accountView setHidden:NO];
+                                 } else {
+                                     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Eroare", nil) message:dictionary[@"failed"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                 }
+                             } else {
+                                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Eroare", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                             }
+                         }];
+                         
+                     }
+                 }];
+             }
+             NSLog(@"Logged in");
+         }
+     }];
+
 }
 
 - (IBAction)registerButtonTapped:(id)sender {
@@ -326,6 +404,10 @@
 - (IBAction)logoutButtonTapped:(id)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"email"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"facebookEmail"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"facebookName"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"facebookImage"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"facebookId"];
     //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[WebServiceManager sharedInstance] setUserInfo:nil];

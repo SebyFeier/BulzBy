@@ -16,6 +16,8 @@
 #import "MapViewController.h"
 #import "LoginViewController.h"
 #import "LocationsViewController.h"
+//#import "WebViewViewController.h"
+#import "EmailViewController.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource> {
     BOOL menuIsShown;
@@ -51,6 +53,7 @@
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     [self.allCategories addObject:[NSDictionary dictionaryWithObject:NSLocalizedString(@"Locations", nil) forKey:@"name"]];
                     [self.allCategories addObject:[NSDictionary dictionaryWithObject:NSLocalizedString(@"My Account", nil) forKey:@"name"]];
+                    [self.allCategories addObject:[NSDictionary dictionaryWithObject:NSLocalizedString(@"Contact", nil) forKey:@"name"]];
                     [self.menuTableView reloadData];
                 } else {
                     [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
@@ -118,11 +121,13 @@
         }
         NSLog(@"%ld",(long)indexPath.row);
         NSDictionary *category = [self.allCategories objectAtIndex:indexPath.row];
-        if (indexPath.row == [self.allCategories count] - 2) {
+        if (indexPath.row == [self.allCategories count] - 3) {
             [cell uppdateCellWithInfo:category withImage:@"location512"];
-        } else if (indexPath.row == [self.allCategories count] - 1) {
+        } else if (indexPath.row == [self.allCategories count] - 2) {
             [cell uppdateCellWithInfo:category withImage:@"user"];
-        } else {
+        } else if (indexPath.row == [self.allCategories count] - 1) {
+            [cell uppdateCellWithInfo:category withImage:@"contactIcon"];
+        }else {
             [cell updateCellWithInfo:category];
         }
         return cell;
@@ -145,10 +150,17 @@
         
     } else if (tableView == self.menuTableView) {
         if (indexPath.row == [self.allCategories count] - 1) {
+//            WebViewViewController *webViewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewControllerIdentifier"];
+//            webViewViewController.urlString = @"https://www.anuntul.co.uk/pagina/intrebari-si-raspunsuri/";
+//            [self.navigationController pushViewController:webViewViewController animated:YES];
+            EmailViewController *emailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailViewControllerIdentifier"];
+            [self.navigationController pushViewController:emailViewController animated:YES];
+
+        } else if (indexPath.row == [self.allCategories count] - 2) {
             LoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewControllerIdentifier"];
             loginViewController.shouldReturn = NO;
             [self.navigationController pushViewController:loginViewController animated:YES];
-        } else if (indexPath.row == [self.allCategories count] - 2) {
+        } else if (indexPath.row == [self.allCategories count] - 3) {
             LocationsViewController *locationsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationsViewControllerIdentifier"];
             locationsViewController.allLocations = self.allCountries;
             [self.navigationController pushViewController:locationsViewController animated:YES];

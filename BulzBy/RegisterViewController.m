@@ -55,6 +55,9 @@
     [self.forgotEmailTextField addBottomBorderWithHeight:1 andColor:grayColor];
 
 }
+- (IBAction)agreeSwitchTapped:(id)sender {
+    [self.view endEditing:YES];
+}
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     
@@ -93,7 +96,7 @@
         self.editWidthConstraint.constant = CGRectGetWidth(self.view.frame) - 40;
         [self.view layoutIfNeeded];
         if (self.userInfo) {
-            self.profileUsernameLabel.text = self.userInfo[@"nume"];
+            self.profileUsernameLabel.text = self.userInfo[@"name"];
             self.profileEmailLabel.text = self.userInfo[@"email"];
             if ([self.userInfo[@"post_avatar"] length]) {
                 [self.profileImageView hnk_setImageFromURL:[NSURL URLWithString:self.userInfo[@"post_avatar"]]];
@@ -157,9 +160,9 @@
                                         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                                         [userDefaults setObject:self.registerEmailTextField.text forKey:@"email"];
                                         [userDefaults setObject:self.registerPasswordTextField.text forKey:@"password"];
-                                        [userDefaults setObject:dictionary forKey:@"userInfo"];
+//                                        [userDefaults setObject:dictionary forKey:@"userInfo"];
                                         [userDefaults synchronize];
-                                        [self.navigationController popToRootViewControllerAnimated:YES];
+                                        [self.navigationController popViewControllerAnimated:YES];
                                     }
                                 } else {
                                     if (dictionary[@"errors"]) {
@@ -246,6 +249,38 @@
 
 - (IBAction)editSaveButtonTapped:(id)sender {
     [self.view endEditing:YES];
+    if ([self.profileUsernameLabel.text length]) {
+        if ([self.profilePasswordLabel.text length]) {
+            if ([self.profilePasswordLabel.text isEqualToString:self.profileConfirmPasswordTextField.text]) {
+                [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+                NSString *apiToken = [[[WebServiceManager sharedInstance] userInfo] objectForKey:@"api_token"];
+                [[WebServiceManager sharedInstance] editUserWithId:self.userInfo[@"id_user"] username:self.profileUsernameLabel.text andPassword:self.profilePasswordLabel.text andApiToken:apiToken andEmail:self.profileEmailLabel.text withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                    [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                    [userDefaults setObject:self.profileEmailLabel.text forKey:@"email"];
+                    [userDefaults setObject:self.profilePasswordLabel.text forKey:@"password"];
+                    [userDefaults setObject:dictionary[@"id_user"] forKey:@"id_user"];
+                    [userDefaults synchronize];
+                    
+                }];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"Eroare" message:@"Parolele nu coincid" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            }
+        } else {
+            [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+            NSString *apiToken = [[[WebServiceManager sharedInstance] userInfo] objectForKey:@"api_token"];
+            [[WebServiceManager sharedInstance] editUserWithId:self.userInfo[@"id_user"] username:self.profileUsernameLabel.text andPassword:nil andApiToken:apiToken andEmail:self.profileEmailLabel.text withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:self.profileUsernameLabel.text forKey:@"email"];
+                //                [userDefaults setObject:self.passwordTextField.text forKey:@"password"];
+                [userDefaults setObject:dictionary[@"id_user"] forKey:@"id_user"];
+                [userDefaults synchronize];
+            }];
+        }
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Eroare" message:@"Introduceți numele" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
 }
 
 -(BOOL) validateEmail: (NSString *) email

@@ -26,6 +26,8 @@
 		F1ACF0911CC6975800C2CA43 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ACF0901CC6975800C2CA43 /* LocationsViewController.m */; };
 		F1ACF0941CC69A3400C2CA43 /* LocationRestaurantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ACF0931CC69A3400C2CA43 /* LocationRestaurantsViewController.m */; };
 		F1ACF0971CC6A6F300C2CA43 /* SelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ACF0961CC6A6F300C2CA43 /* SelectionViewController.m */; };
+		F1B176DE1CD3D7E3003082D4 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B176DD1CD3D7E3003082D4 /* WebViewViewController.m */; };
+		F1B176E11CD3DC6A003082D4 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B176E01CD3DC6A003082D4 /* EmailViewController.m */; };
 		F1BB656C1CC92D7B00C86F48 /* BookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB656B1CC92D7B00C86F48 /* BookingTableViewCell.m */; };
 		F1BB656F1CC92E9B00C86F48 /* BookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BB656E1CC92E9B00C86F48 /* BookingsViewController.m */; };
 		F1DD8F1D1CBFF5B0002B5411 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DD8F1C1CBFF5B0002B5411 /* main.m */; };
@@ -103,6 +105,10 @@
 		F1ACF0931CC69A3400C2CA43 /* LocationRestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationRestaurantsViewController.m; sourceTree = "<group>"; };
 		F1ACF0951CC6A6F300C2CA43 /* SelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionViewController.h; sourceTree = "<group>"; };
 		F1ACF0961CC6A6F300C2CA43 /* SelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionViewController.m; sourceTree = "<group>"; };
+		F1B176DC1CD3D7E3003082D4 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
+		F1B176DD1CD3D7E3003082D4 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
+		F1B176DF1CD3DC6A003082D4 /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
+		F1B176E01CD3DC6A003082D4 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		F1BB656A1CC92D7A00C86F48 /* BookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewCell.h; sourceTree = "<group>"; };
 		F1BB656B1CC92D7B00C86F48 /* BookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewCell.m; sourceTree = "<group>"; };
 		F1BB656D1CC92E9B00C86F48 /* BookingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingsViewController.h; sourceTree = "<group>"; };
@@ -239,6 +245,10 @@
 				F1BB656E1CC92E9B00C86F48 /* BookingsViewController.m */,
 				F127D8321CCB74CB00A09F01 /* PhotoGalleryViewController.h */,
 				F127D8331CCB74CB00A09F01 /* PhotoGalleryViewController.m */,
+				F1B176DC1CD3D7E3003082D4 /* WebViewViewController.h */,
+				F1B176DD1CD3D7E3003082D4 /* WebViewViewController.m */,
+				F1B176DF1CD3DC6A003082D4 /* EmailViewController.h */,
+				F1B176E01CD3DC6A003082D4 /* EmailViewController.m */,
 				F1ACDA311CC2BD44003D5FEF /* CustomPointAnnotationView.h */,
 				F1ACDA321CC2BD44003D5FEF /* CustomPointAnnotationView.m */,
 				F1DD8F571CC00C57002B5411 /* WebServiceManager.h */,
@@ -508,6 +518,7 @@
 				F1ACF0941CC69A3400C2CA43 /* LocationRestaurantsViewController.m in Sources */,
 				F14F92FB1CC5433200A57404 /* UIView+Borders.m in Sources */,
 				F1DD8F231CBFF5B0002B5411 /* ViewController.m in Sources */,
+				F1B176E11CD3DC6A003082D4 /* EmailViewController.m in Sources */,
 				F1DD8F201CBFF5B0002B5411 /* AppDelegate.m in Sources */,
 				F1F829B31CC3E22600166A7E /* ReviewViewController.m in Sources */,
 				F127D8311CCB5B0A00A09F01 /* AttachementCollectionViewCell.m in Sources */,
@@ -515,6 +526,7 @@
 				F1DD8F591CC00C57002B5411 /* WebServiceManager.m in Sources */,
 				F1BB656C1CC92D7B00C86F48 /* BookingTableViewCell.m in Sources */,
 				F1DD8F501CBFFD5E002B5411 /* HomeTableViewCell.m in Sources */,
+				F1B176DE1CD3D7E3003082D4 /* WebViewViewController.m in Sources */,
 				F1DD8F1D1CBFF5B0002B5411 /* main.m in Sources */,
 				F127D8371CCB76CB00A09F01 /* PhotoGalleryCollectionViewCell.m in Sources */,
 				F1DD8F561CC00456002B5411 /* MenuTableView.m in Sources */,
@@ -687,13 +699,13 @@
 			baseConfigurationReference = 30F6BA0485CCC33C7F50B6A3 /* Pods-BulzBy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian Feier (766XG86E5X)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				INFOPLIST_FILE = BulzBy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.reea.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.bulzby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08a9cd76-4125-49f8-a562-551fd3c7be2b";
+				PROVISIONING_PROFILE = "4c2099b6-126d-45b9-9670-b1cf8cc9145e";
 			};
 			name = Debug;
 		};
@@ -702,13 +714,13 @@
 			baseConfigurationReference = C28FC81EB4AF3C6157407762 /* Pods-BulzBy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian Feier (766XG86E5X)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				INFOPLIST_FILE = BulzBy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.reea.testapp;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.bulzby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08a9cd76-4125-49f8-a562-551fd3c7be2b";
+				PROVISIONING_PROFILE = "4c2099b6-126d-45b9-9670-b1cf8cc9145e";
 			};
 			name = Release;
 		};

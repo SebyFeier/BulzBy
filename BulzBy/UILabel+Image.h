@@ -11,5 +11,6 @@
 @interface UILabel (Image)
 
 - (UILabel *)createLabelWithImage:(NSString *)imageName andTitle:(NSString *)title isPortrait:(BOOL)isPortrait;
+- (UILabel *)createLabelWithImage:(NSString *)imageName andTitle:(NSString *)title isSquared:(BOOL)isSquared;
 
 @end

@@ -36,7 +36,7 @@
 "BXt-Kb-sBg.text" = "DATA";
 
 /* Class = "UILabel"; text = "Review"; ObjectID = "CLO-GT-4MG"; */
-"CLO-GT-4MG.text" = "Review";
+"CLO-GT-4MG.text" = "Locatii";
 
 /* Class = "UITextField"; placeholder = "Parolă nouă"; ObjectID = "D9e-du-3yR"; */
 "D9e-du-3yR.placeholder" = "Parolă nouă";
