@@ -66,7 +66,7 @@
         self.environmentRating.enabled = YES;
         self.foodRating.enabled = YES;
         self.serviceRating.enabled = YES;
-        self.reviewTextView.text = NSLocalizedString(@"Enter Review", nil);
+        self.reviewTextView.text = NSLocalizedString(@" Enter Review", nil);
         self.reviewTextView.editable = YES;
         self.submitButton.hidden = NO;
         self.submitLabel.hidden = NO;
@@ -199,7 +199,7 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:NSLocalizedString(@"Enter Review", nil)]) {
+    if ([textView.text isEqualToString:NSLocalizedString(@" Enter Review", nil)]) {
         textView.text = @"";
         textView.textColor = [UIColor darkGrayColor]; //optional
     }
@@ -209,7 +209,7 @@
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@""]) {
-        textView.text = NSLocalizedString(@"Enter Review", nil);
+        textView.text = NSLocalizedString(@" Enter Review", nil);
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
     [textView resignFirstResponder];

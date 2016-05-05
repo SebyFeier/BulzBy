@@ -162,13 +162,16 @@
                 default:
                     break;
             }
-            UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, scheduleHeight + 20, CGRectGetWidth(view.frame) - 20, 20)];
-            emailLabel = [emailLabel createLabelWithImage:@"schedule512" andTitle:[NSString stringWithFormat:@"%@: %@", dayString, schedule[@"hours"]] isSquared:YES];
-            [view addSubview:emailLabel];
+            UILabel *dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, scheduleHeight + 20, 120, 20)];
+            dayLabel = [dayLabel createLabelWithImage:@"schedule512" andTitle:[NSString stringWithFormat:@"%@:", dayString] isSquared:YES];
+            [view addSubview:dayLabel];
+            UILabel *hourLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, scheduleHeight + 22, CGRectGetWidth(self.view.frame) - 130, 20)];
+            hourLabel.text = schedule[@"hours"];
+            [view addSubview:hourLabel];
             scheduleHeight += 20;
 
         }
-        view.frame = CGRectMake(0, self.descriptionViewHeight.constant + infoTotalHeight + 10, CGRectGetWidth(self.mainScrollView.frame), scheduleHeight + 20);
+        view.frame = CGRectMake(0, self.descriptionViewHeight.constant + infoTotalHeight + 10, CGRectGetWidth(self.mainScrollView.frame), scheduleHeight + 30);
         
         
         [self.mainScrollView addSubview:view];
@@ -200,7 +203,7 @@
             self.imagesView = [[UIView alloc] initWithFrame:CGRectZero];
             self.imagesView.backgroundColor = [UIColor whiteColor];
 //            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + infoTotalHeight + 25, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
-            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + scheduleHeight + 65, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
+            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + scheduleHeight + 75, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
         }
         if (self.imagesView) {
             UILabel *photosLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, CGRectGetWidth(self.imagesView.frame) - 20, 20)];
@@ -219,7 +222,7 @@
     
     
     
-    self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.mainScrollView.frame),self.descriptionViewHeight.constant + infoTotalHeight + CGRectGetHeight(self.imagesView.frame) + scheduleHeight + 40);
+    self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.mainScrollView.frame),self.descriptionViewHeight.constant + infoTotalHeight + CGRectGetHeight(self.imagesView.frame) + scheduleHeight + 50);
     
     nextHeight = 0;
 
