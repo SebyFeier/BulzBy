@@ -36,22 +36,24 @@
     for (int i=0 ; i< self.allLocations.count; i++)
     {
         NSMutableDictionary *dict_data = [self.allLocations objectAtIndex:i];
-
-        double lat = [[dict_data objectForKey:@"latitude"] doubleValue];
-        double longt = [[dict_data objectForKey:@"longitude"] doubleValue];
-        
-        CLLocationCoordinate2D loc;
-        loc.longitude = longt;
-        loc.latitude = lat;
-        CustomPointAnnotationView *annotationPoint = [[CustomPointAnnotationView alloc] init];
-        annotationPoint.coordinate = loc;
-        if (!self.isRoute) {
-            annotationPoint.tag = [[dict_data objectForKey:@"id"] integerValue];
-            annotationPoint.title = [dict_data objectForKey:@"name"];
-            annotationPoint.subtitle = [dict_data objectForKey:@"address"];
+        if (![[dict_data objectForKey:@"latitude"] isKindOfClass:[NSNull class]] && ![[dict_data objectForKey:@"longitude"] isKindOfClass:[NSNull class]]) {
+            double lat = [[dict_data objectForKey:@"latitude"] doubleValue];
+            double longt = [[dict_data objectForKey:@"longitude"] doubleValue];
+            
+            CLLocationCoordinate2D loc;
+            loc.longitude = longt;
+            loc.latitude = lat;
+            CustomPointAnnotationView *annotationPoint = [[CustomPointAnnotationView alloc] init];
+            annotationPoint.coordinate = loc;
+            if (!self.isRoute) {
+                annotationPoint.tag = [[dict_data objectForKey:@"id"] integerValue];
+                annotationPoint.title = [dict_data objectForKey:@"name"];
+                annotationPoint.subtitle = [dict_data objectForKey:@"address"];
+            }
+            
+            [self.mapView addAnnotation:annotationPoint];
         }
         
-        [self.mapView addAnnotation:annotationPoint];
     }
     MKMapRect zoomRect = MKMapRectNull;
     for (id <MKAnnotation> annotation in self.mapView.annotations)

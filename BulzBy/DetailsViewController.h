@@ -15,11 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewWidth;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantNameLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionViewHeight;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *descriptionViewHeight;
 
 @property (nonatomic, strong) NSDictionary *restaurantInfo;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UIView *descriptionView;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (nonatomic, strong) UILabel *descriptionTitle;
+@property (strong, nonatomic) IBOutlet UIView *descriptionView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (nonatomic, strong) UIView *imagesView;
 @property (nonatomic, strong) UICollectionView *galleryCollectionView;

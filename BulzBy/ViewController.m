@@ -49,7 +49,6 @@
                 if (!error) {
                     self.allCategories = [[NSMutableArray alloc] initWithArray:dictionary[@"categories"]];
                     self.allCountries = [[NSMutableArray alloc] initWithArray:dictionary[@"countries"]];
-                    [[NSUserDefaults standardUserDefaults] setObject:self.allCountries forKey:@"allCountries"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     [self.allCategories addObject:[NSDictionary dictionaryWithObject:NSLocalizedString(@"Locations", nil) forKey:@"name"]];
                     [self.allCategories addObject:[NSDictionary dictionaryWithObject:NSLocalizedString(@"My Account", nil) forKey:@"name"]];

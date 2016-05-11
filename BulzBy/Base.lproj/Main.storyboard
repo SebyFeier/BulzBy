@@ -288,48 +288,7 @@
                             </button>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WN1-bQ-oEO">
                                 <rect key="frame" x="0.0" y="126" width="600" height="424"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEE-0i-4ga">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="95"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YR8-wN-b9D">
-                                                <rect key="frame" x="8" y="8" width="105" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="105" id="7IW-e2-nw5"/>
-                                                    <constraint firstAttribute="height" constant="21" id="G6I-9P-RTJ"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-tA-aHD">
-                                                <rect key="frame" x="8" y="29" width="584" height="58"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="-1" height="-1"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="YR8-wN-b9D" firstAttribute="top" secondItem="uEE-0i-4ga" secondAttribute="top" constant="8" id="7Sq-O3-g31"/>
-                                            <constraint firstAttribute="bottom" secondItem="Qia-tA-aHD" secondAttribute="bottom" constant="8" id="VQs-KW-Ihj"/>
-                                            <constraint firstAttribute="height" constant="95" id="VUh-x7-wJS"/>
-                                            <constraint firstItem="Qia-tA-aHD" firstAttribute="top" secondItem="YR8-wN-b9D" secondAttribute="bottom" id="VgG-tR-reg"/>
-                                            <constraint firstItem="YR8-wN-b9D" firstAttribute="leading" secondItem="uEE-0i-4ga" secondAttribute="leading" constant="8" id="aiU-Qf-Drn"/>
-                                            <constraint firstItem="Qia-tA-aHD" firstAttribute="leading" secondItem="uEE-0i-4ga" secondAttribute="leading" constant="8" id="bPE-gv-xCi"/>
-                                            <constraint firstAttribute="trailing" secondItem="Qia-tA-aHD" secondAttribute="trailing" constant="8" id="jxp-ea-KJH"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="uEE-0i-4ga" secondAttribute="bottom" constant="329" id="D9K-TB-PLy"/>
-                                    <constraint firstItem="uEE-0i-4ga" firstAttribute="top" secondItem="WN1-bQ-oEO" secondAttribute="top" id="c5m-JT-Oc4"/>
-                                    <constraint firstItem="Qia-tA-aHD" firstAttribute="width" secondItem="WN1-bQ-oEO" secondAttribute="width" constant="-16" id="gWK-kG-lK0"/>
-                                    <constraint firstAttribute="trailing" secondItem="uEE-0i-4ga" secondAttribute="trailing" id="nkx-A7-9sc"/>
-                                    <constraint firstItem="uEE-0i-4ga" firstAttribute="leading" secondItem="WN1-bQ-oEO" secondAttribute="leading" id="z6q-Ra-jKj"/>
-                                </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJ1-xz-S2l">
                                 <rect key="frame" x="0.0" y="548" width="600" height="52"/>
@@ -445,9 +404,6 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="gTY-eG-Dm7" id="gtz-j3-hYn"/>
-                        <outlet property="descriptionLabel" destination="Qia-tA-aHD" id="YjL-Jm-dfd"/>
-                        <outlet property="descriptionView" destination="uEE-0i-4ga" id="uzf-Mr-m1C"/>
-                        <outlet property="descriptionViewHeight" destination="VUh-x7-wJS" id="Sbd-I0-PQX"/>
                         <outlet property="imageScrollView" destination="Uw3-gD-eji" id="Um4-Lj-HAX"/>
                         <outlet property="mainScrollView" destination="WN1-bQ-oEO" id="3js-VI-h6n"/>
                         <outlet property="restaurantNameLabel" destination="erX-sQ-9bU" id="ZX9-bW-whU"/>

@@ -216,7 +216,6 @@
 - (IBAction)locationButtonTapped:(id)sender {
     [self.view endEditing:YES];
     SelectionViewController *selectionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectionViewControllerIdentifier"];
-//    selectionViewController.allSelections = [[NSUserDefaults standardUserDefaults] objectForKey:@"allCountries"];
     selectionViewController.allSelections = self.restaurantInfo[@"locations"];
     selectionViewController.delegate = self;
     [self.navigationController pushViewController:selectionViewController animated:YES];

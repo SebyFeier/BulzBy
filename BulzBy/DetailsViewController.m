@@ -31,7 +31,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self createInterface];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,6 +61,7 @@
         [self.descriptionView removeFromSuperview];
     } else {
         self.descriptionLabel.text = self.restaurantInfo[@"description"];
+        self.descriptionLabel.font = [UIFont systemFontOfSize:17];
         [self updateDescription];
     }
     
@@ -99,25 +100,25 @@
         }
         //
         if ([location[@"phone"] length]) {
-        UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight+ 15, CGRectGetWidth(view.frame) - 20, 20)];
-        phoneLabel = [phoneLabel createLabelWithImage:@"phone512" andTitle:location[@"phone"] isSquared:YES];
-        [view addSubview:phoneLabel ];
+            UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
+            phoneLabel = [phoneLabel createLabelWithImage:@"phone512" andTitle:location[@"phone"] isSquared:YES];
+            [view addSubview:phoneLabel ];
             currentHeight += 20;
         }
         if ([location[@"email"] length]) {
-            UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
+            UILabel *emailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 20, CGRectGetWidth(view.frame) - 20, 20)];
             emailLabel = [emailLabel createLabelWithImage:@"mail512" andTitle:location[@"email"] isSquared:NO];
             [view addSubview:emailLabel];
             currentHeight += 20;
         }
-//        if ([location[@"website"] length]) {
-//        UILabel *scheduleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
-//        scheduleLabel = [scheduleLabel createLabelWithImage:@"schedule512" andTitle:@"" isPortrait:NO];
-//        [view addSubview:scheduleLabel];
-//            currentHeight += 20;
-//        }
+        //        if ([location[@"website"] length]) {
+        //        UILabel *scheduleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentHeight + 15, CGRectGetWidth(view.frame) - 20, 20)];
+        //        scheduleLabel = [scheduleLabel createLabelWithImage:@"schedule512" andTitle:@"" isPortrait:NO];
+        //        [view addSubview:scheduleLabel];
+        //            currentHeight += 20;
+        //        }
         view.frame = CGRectMake(0, (self.descriptionViewHeight.constant > 0)?CGRectGetMaxY(self.descriptionView.frame) + (nextHeight * locationIndex) + 10:nextHeight * locationIndex + locationIndex>0?20:0, CGRectGetWidth(self.mainScrollView.frame), currentHeight + 40);
-//        view.frame = CGRectMake(0, (self.descriptionViewHeight.constant > 0)?CGRectGetMaxY(self.descriptionView.frame) + (nextHeight * locationIndex) + 10:CGRectGetMaxY(self.imageScrollView.frame) + (nextHeight * locationIndex) + 20, CGRectGetWidth(self.mainScrollView.frame), CGRectGetHeight(nameLabel.frame) + CGRectGetHeight(addressLabel.frame) + CGRectGetHeight(phoneLabel.frame) + CGRectGetHeight(emailLabel.frame) + CGRectGetHeight(scheduleLabel.frame) + 40);
+        //        view.frame = CGRectMake(0, (self.descriptionViewHeight.constant > 0)?CGRectGetMaxY(self.descriptionView.frame) + (nextHeight * locationIndex) + 10:CGRectGetMaxY(self.imageScrollView.frame) + (nextHeight * locationIndex) + 20, CGRectGetWidth(self.mainScrollView.frame), CGRectGetHeight(nameLabel.frame) + CGRectGetHeight(addressLabel.frame) + CGRectGetHeight(phoneLabel.frame) + CGRectGetHeight(emailLabel.frame) + CGRectGetHeight(scheduleLabel.frame) + 40);
         nextHeight = CGRectGetHeight(view.frame) + 10;
         infoTotalHeight += nextHeight;
         [self.mainScrollView addSubview:view];
@@ -129,7 +130,7 @@
         view.backgroundColor = [UIColor whiteColor];
         
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, CGRectGetWidth(view.frame) - 20, 20)];
-//        nameLabel.text = [NSString stringWithFormat:@"%@", location[@"name"]];
+        //        nameLabel.text = [NSString stringWithFormat:@"%@", location[@"name"]];
         nameLabel.text = NSLocalizedString(@"Schedule", nil);
         nameLabel.font = [UIFont boldSystemFontOfSize:17];
         [view addSubview:nameLabel];
@@ -169,7 +170,7 @@
             hourLabel.text = schedule[@"hours"];
             [view addSubview:hourLabel];
             scheduleHeight += 20;
-
+            
         }
         view.frame = CGRectMake(0, self.descriptionViewHeight.constant + infoTotalHeight + 10, CGRectGetWidth(self.mainScrollView.frame), scheduleHeight + 30);
         
@@ -202,8 +203,9 @@
         if (collectionViewHeight > 0) {
             self.imagesView = [[UIView alloc] initWithFrame:CGRectZero];
             self.imagesView.backgroundColor = [UIColor whiteColor];
-//            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + infoTotalHeight + 25, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
-            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + scheduleHeight + 75, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
+            //            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + infoTotalHeight + 25, CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
+            BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+            self.imagesView.frame = CGRectMake(0, CGRectGetHeight(self.imageScrollView.frame) + self.descriptionViewHeight.constant + scheduleHeight + (isIpad?55:75), CGRectGetWidth(self.mainScrollView.frame), collectionViewHeight + 45);
         }
         if (self.imagesView) {
             UILabel *photosLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, CGRectGetWidth(self.imagesView.frame) - 20, 20)];
@@ -211,11 +213,11 @@
             photosLabel.font = [UIFont boldSystemFontOfSize:17];
             
             [self.imagesView addSubview:photosLabel];
-        self.galleryCollectionView.frame = CGRectMake(10, CGRectGetMaxY(photosLabel.frame) + 5, CGRectGetWidth(self.imagesView.frame) - 20, collectionViewHeight);
+            self.galleryCollectionView.frame = CGRectMake(10, CGRectGetMaxY(photosLabel.frame) + 5, CGRectGetWidth(self.imagesView.frame) - 20, collectionViewHeight);
             
             [self.imagesView addSubview:self.galleryCollectionView];
         }
-//        [self.mainScrollView addSubview:self.galleryCollectionView];
+        //        [self.mainScrollView addSubview:self.galleryCollectionView];
         [self.mainScrollView addSubview:self.imagesView];
         
     }
@@ -225,23 +227,47 @@
     self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.mainScrollView.frame),self.descriptionViewHeight.constant + infoTotalHeight + CGRectGetHeight(self.imagesView.frame) + scheduleHeight + 50);
     
     nextHeight = 0;
-
+    
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.imageScrollView.delegate = self;
-//    imagesArray = [NSArray arrayWithArray:self.restaurantInfo[@"avatar"]];
+    //    imagesArray = [NSArray arrayWithArray:self.restaurantInfo[@"avatar"]];
     imagesArray = [NSArray arrayWithObjects:[self.restaurantInfo[@"cover"]  objectForKey:@"url"], nil];
     self.restaurantNameLabel.text = self.restaurantInfo[@"name"];
     self.pageControl.numberOfPages = imagesArray.count;
     self.imageScrollView.userInteractionEnabled = NO;
     self.pageControl.hidden = YES;
     [self.imageScrollView setContentSize:CGSizeMake(self.view.frame.size.width * [imagesArray count], 126)];
+    self.descriptionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 95)];
+    self.descriptionView.backgroundColor = [UIColor whiteColor];
+    self.descriptionViewHeight = [NSLayoutConstraint constraintWithItem:self.descriptionView
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                             multiplier:1.0
+                                                               constant:95];
+    
+    self.descriptionTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, CGRectGetWidth(self.descriptionView.frame) - 10, 20)];
+    self.descriptionTitle.text = NSLocalizedString(@"Description", nil);
+    //    self.descriptionTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    self.descriptionTitle.font = [UIFont boldSystemFontOfSize:17];
+    //    self.descriptionTitle.backgroundColor = [UIColor redColor];
+    //    self.descriptionTitle.font = [UIFont font]
+    [self.descriptionView addSubview:self.descriptionTitle];
+    self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    
+    self.descriptionLabel.frame = CGRectMake(10, CGRectGetMaxY(self.descriptionTitle.frame) + 5, CGRectGetWidth(self.descriptionView.frame) - 10, 0);
+    self.descriptionLabel.numberOfLines = 0;
+    [self.descriptionView addSubview:self.descriptionLabel];
+    
+    [self.mainScrollView addSubview:self.descriptionView];
     self.descriptionLabel.textAlignment = NSTextAlignmentJustified;
 }
 
@@ -257,7 +283,8 @@
                                              descriptionFrame.origin.y,
                                              descriptionFrame.size.width,
                                              descriptionHeight);
-    self.descriptionViewHeight.constant = descriptionHeight + 80;
+    self.descriptionViewHeight.constant = descriptionHeight + 60;
+    self.descriptionView.frame = CGRectMake(self.descriptionView.frame.origin.x, self.descriptionView.frame.origin.y, CGRectGetWidth(self.descriptionView.frame), descriptionHeight + 60);
     [self.view layoutIfNeeded];
 }
 
@@ -329,7 +356,7 @@
 
 - (IBAction)shareButtonTapped:(id)sender {
     NSString *textToShare = @"";
-//    NSURL *myWebsite = [NSURL URLWithString:[NSString stringWithFormat:@"https://anuntul.co.uk/%@.html",self.restaurantInfo[@"website"]]];
+    //    NSURL *myWebsite = [NSURL URLWithString:[NSString stringWithFormat:@"https://anuntul.co.uk/%@.html",self.restaurantInfo[@"website"]]];
     NSURL *myWebsite = [NSURL URLWithString:self.restaurantInfo[@"website"]];
     
     NSArray *objectsToShare = @[textToShare, myWebsite];
@@ -357,29 +384,29 @@
 
 - (IBAction)reviewButtonTapped:(id)sender {
     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-//    NSDictionary *restaurantInfo = [self.allRestaurants objectAtIndex:indexPath.row];
+    //    NSDictionary *restaurantInfo = [self.allRestaurants objectAtIndex:indexPath.row];
     [[WebServiceManager sharedInstance] getCompanyInformationWithId:self.restaurantInfo[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-//        DetailsViewController *detailsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewControllerIdentifier"];
-//        detailsViewController.restaurantInfo = dictionary;
-//        [self.navigationController pushViewController:detailsViewController animated:YES];
+        //        DetailsViewController *detailsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewControllerIdentifier"];
+        //        detailsViewController.restaurantInfo = dictionary;
+        //        [self.navigationController pushViewController:detailsViewController animated:YES];
         ReviewViewController *reviewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReviewViewControllerIdentifier"];
         reviewViewController.allReviews = dictionary[@"reviews"];
         reviewViewController.restaurantInfo = dictionary;
         [self.navigationController pushViewController:reviewViewController animated:YES];
-
+        
         
     }];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return [self.adDetails[@"images"] count];
+    //    return [self.adDetails[@"images"] count];
     if ([self.restaurantInfo[@"attachments"] count] > 8) {
         return 8;
     }
     return [self.restaurantInfo[@"attachments"] count];
-//    return 8;
+    //    return 8;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -389,17 +416,17 @@
     if (!cell) {
         cell = (AttachementCollectionViewCell *)[[AttachementCollectionViewCell alloc] initWithFrame:self.galleryCollectionView.bounds];
     }
-//    cell.backgroundColor = [UIColor greenColor];
-//    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
-//    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
-//    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
-//    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
-//    cell.backgroundColor = color;
+    //    cell.backgroundColor = [UIColor greenColor];
+    //    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+    //    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+    //    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+    //    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+    //    cell.backgroundColor = color;
     NSDictionary *attachmentInfo = [self.restaurantInfo[@"attachments"] objectAtIndex:indexPath.row];
     [cell loadImageWithInfo:attachmentInfo];
-
+    
     if (indexPath.row == 7) {
-//        cell.backgroundColor = [UIColor clearColor];
+        //        cell.backgroundColor = [UIColor clearColor];
         UIView *morePhotosView = [[UIView alloc] initWithFrame:cell.bounds];
         morePhotosView.backgroundColor = [UIColor blackColor];
         morePhotosView.alpha = 0.7;
@@ -414,16 +441,16 @@
         [cell addSubview:morePhotosView];
         [cell bringSubviewToFront:morePhotosView];
     }
-//    NSDictionary *image = [self.adDetails[@"images"] objectAtIndex:indexPath.row];
-//    [cell loadImageWithInfo:image isFullScreen:NO];
-//    self.pageControl.currentPage = indexPath.row;
+    //    NSDictionary *image = [self.adDetails[@"images"] objectAtIndex:indexPath.row];
+    //    [cell loadImageWithInfo:image isFullScreen:NO];
+    //    self.pageControl.currentPage = indexPath.row;
     
     return cell;
     
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSArray *imagesArray = [self.adDetails objectForKey:@"images"];
+    //    NSArray *imagesArray = [self.adDetails objectForKey:@"images"];
     PhotoGalleryViewController *photoGalleryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PhotoGalleryViewControllerIdentifier"];
     photoGalleryViewController.imagesArray = self.restaurantInfo[@"attachments"];
     [self.navigationController pushViewController:photoGalleryViewController animated:YES];

@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BulzBy/MapViewController.m"
-            timestampString = "483299200.820118"
+            timestampString = "484596415.05923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-restaurantInfoButtonTapped:"
             landmarkType = "5">
             <Locations>
@@ -154,11 +154,11 @@
                   moduleName = "BulzBy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/BulzBy/BulzBy/MapViewController.m"
-                  timestampString = "483729795.995851"
+                  timestampString = "484596685.695877"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
                   offsetFromSymbolStart = "116">
                </Location>
                <Location
@@ -169,11 +169,11 @@
                   moduleName = "BulzBy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SebyFeier/Projects/BulzBy/BulzBy/MapViewController.m"
-                  timestampString = "483729795.996091"
+                  timestampString = "484596685.696052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
                   offsetFromSymbolStart = "132">
                </Location>
             </Locations>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BulzBy/DetailsViewController.m"
-            timestampString = "483729769.2214"
+            timestampString = "484596611.548832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-createInterface"
             landmarkType = "5">
          </BreakpointContent>
