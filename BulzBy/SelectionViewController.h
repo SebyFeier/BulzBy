@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSArray *allSelections;
 @property (nonatomic, weak) id<SelectionDelegate>delegate;
+@property (nonatomic, assign) BOOL requiresStep2;
 
 @end
 

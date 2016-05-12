@@ -43,11 +43,52 @@ NSString *const WebServiceUrl = @"http://restaurantfinder.boxnets.com/";
         urlString = [urlString stringByAppendingString:@"&city_id="];
     }
     if (name) {
-        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&name=%@",categoryId]];
+        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&name=%@",name]];
     } else {
         urlString = [urlString stringByAppendingString:@"&name="];
     }
     urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&page=%@",pageNumber]];
+    
+    
+    NSURL *url = [NSURL URLWithString:WebServiceUrl];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:urlString parameters:nil];
+    NSLog(@"%@",request);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        if (!self.listOfRestaurants ) {
+            self.listOfRestaurants = [[NSMutableArray alloc] init];
+        }
+        completionBlock(JSON, nil);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
+}
+
+- (void)getCitiesFromCountry:(NSNumber *)countryId withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+    NSString * language = [[[[NSLocale preferredLanguages] objectAtIndex:0] componentsSeparatedByString:@"-"] firstObject];
+    
+    //    NSString *urlString = [NSString stringWithFormat:@"companies.json?api_language=%@&category_id=&city_id=&name=&page=%@",language,pageNumber];
+    NSString *urlString = [NSString stringWithFormat:@"selectable_cities.json?api_language=%@",language];
+    if (countryId) {
+        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&country_id=%@",countryId]];
+    } else {
+        urlString = [urlString stringByAppendingString:@"&country_id="];
+    }
+    //    NSString *urlString = [NSString stringWithFormat:@"companies.json?api_language=%@",language];
+//    if (cityId) {
+//        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&city_id=%@",cityId]];
+//    } else {
+//        urlString = [urlString stringByAppendingString:@"&city_id="];
+//    }
+//    if (name) {
+//        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&name=%@",categoryId]];
+//    } else {
+//        urlString = [urlString stringByAppendingString:@"&name="];
+//    }
+//    urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&page=%@",pageNumber]];
     
     
     NSURL *url = [NSURL URLWithString:WebServiceUrl];

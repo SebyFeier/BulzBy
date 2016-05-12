@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 #import "WebServiceManager.h"
 #import "LocationRestaurantsViewController.h"
+#import "LocationsCitiesViewController.h"
 
 @implementation LocationsViewController
 
@@ -24,34 +25,35 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 30;
+//}
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 25)];
-    /* Create custom view to display section header... */
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, tableView.frame.size.width, 25)];
-    //    [label setFont:[UIFont boldSystemFontOfSize:12]];
-    NSDictionary *countryLocation = [self.allLocations objectAtIndex:section];
-    NSString *string = [countryLocation objectForKey:@"name"];
-    /* Section header is in 0th index... */
-    [label setText:string];
-    //    [label setTextColor:[UIColor colorFromHexString:@"c1c1c1"]];
-    [label setTextColor:[HXColor hx_colorWithHexString:@"c1c1c1"]];
-    [view addSubview:label];
-    //    [view setBackgroundColor:[UIColor colorFromHexString:@"f1eef1"]];
-    [view setBackgroundColor:[HXColor hx_colorWithHexString:@"f1eef1"]];
-    return view;
-}
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 25)];
+//    /* Create custom view to display section header... */
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, tableView.frame.size.width, 25)];
+//    //    [label setFont:[UIFont boldSystemFontOfSize:12]];
+//    NSDictionary *countryLocation = [self.allLocations objectAtIndex:section];
+//    NSString *string = [countryLocation objectForKey:@"name"];
+//    /* Section header is in 0th index... */
+//    [label setText:string];
+//    //    [label setTextColor:[UIColor colorFromHexString:@"c1c1c1"]];
+//    [label setTextColor:[HXColor hx_colorWithHexString:@"c1c1c1"]];
+//    [view addSubview:label];
+//    //    [view setBackgroundColor:[UIColor colorFromHexString:@"f1eef1"]];
+//    [view setBackgroundColor:[HXColor hx_colorWithHexString:@"f1eef1"]];
+//    return view;
+//}
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.allLocations.count;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return self.allLocations.count;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[self.allLocations objectAtIndex:section] objectForKey:@"cities"] count];
+//    return [[[self.allLocations objectAtIndex:section] objectForKey:@"cities"] count];
+    return [self.allLocations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,26 +61,34 @@
     if (!cell) {
         cell = [[LocationsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LocationsTableViewCellIdentifier"];
     }
-    NSDictionary *countryLocation = [self.allLocations objectAtIndex:indexPath.section];
-    NSArray *locations = [countryLocation objectForKey:@"cities"];
-    NSDictionary *location = [locations objectAtIndex:indexPath.row];
-    cell.titleLabel.text = location[@"name"];
+    NSDictionary *countryLocation = [self.allLocations objectAtIndex:indexPath.row];
+//    NSArray *locations = [countryLocation objectForKey:@"cities"];
+//    NSDictionary *location = [locations objectAtIndex:indexPath.row];
+    cell.titleLabel.text = countryLocation[@"name"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *countryLocation = [self.allLocations objectAtIndex:indexPath.section];
-    NSArray *locations = [countryLocation objectForKey:@"cities"];
-    NSDictionary *location = [locations objectAtIndex:indexPath.row];
+    NSDictionary *countryLocation = [self.allLocations objectAtIndex:indexPath.row];
+//    NSArray *locations = [countryLocation objectForKey:@"cities"];
+//    NSDictionary *location = [locations objectAtIndex:indexPath.row];
     [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-    [[WebServiceManager sharedInstance] getListOfRestaurantsWithPageNumber:[NSNumber numberWithInteger:1] categoryId:nil cityId:location[@"id"] name:nil andCompletionBlock:^(NSArray *array, NSError *error) {
+    [[WebServiceManager sharedInstance] getCitiesFromCountry:[NSNumber numberWithInteger:[countryLocation[@"id"] integerValue]] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-        LocationRestaurantsViewController *locationRestaurantsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationRestaurantsViewControllerIdentifier"];
-        locationRestaurantsViewController.allRestaurants = [[NSMutableArray alloc] initWithArray:array];
-        locationRestaurantsViewController.cityId = location[@"id"];
-        locationRestaurantsViewController.cityName = location[@"name"];
-        [self.navigationController pushViewController:locationRestaurantsViewController animated:YES];
+        LocationsCitiesViewController *locationsCities = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationsCitiesViewControllerIdentifier"];
+        locationsCities.allLocations = [NSMutableArray arrayWithArray:dictionary[@"cities"]];
+        locationsCities.countryName = countryLocation[@"name"];
+        [self.navigationController pushViewController:locationsCities animated:YES];
     }];
+//    [[WebServiceManager sharedInstance] getListOfRestaurantsWithPageNumber:[NSNumber numberWithInteger:1] categoryId:nil cityId:location[@"id"] name:nil andCompletionBlock:^(NSArray *array, NSError *error) {
+//        [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:YES];
+//        LocationRestaurantsViewController *locationRestaurantsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationRestaurantsViewControllerIdentifier"];
+//        locationRestaurantsViewController.allRestaurants = [[NSMutableArray alloc] initWithArray:array];
+//        locationRestaurantsViewController.cityId = location[@"id"];
+//        locationRestaurantsViewController.cityName = location[@"name"];
+//        [self.navigationController pushViewController:locationRestaurantsViewController animated:YES];
+//    }];
+    
 }
 @end

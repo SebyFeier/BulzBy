@@ -26,10 +26,10 @@
 
 - (void)updateCellWithInfo:(NSDictionary *)cellInfo {
     self.restaurantTitle.text = cellInfo[@"name"];
-    if ([cellInfo[@"website"] length]) {
-        self.restaurantWebSite.text = cellInfo[@"phone"];
+    if ([cellInfo[@"phone"] length]) {
+        self.restaurantLocation.text = cellInfo[@"phone"];
     } else {
-        self.restaurantWebSite.text = @"";
+        self.restaurantLocation.text = @"";
     }
     NSDictionary *avatar = cellInfo[@"avatar"];
     if (avatar) {
@@ -37,13 +37,13 @@
             [self.restaurantImageView hnk_setImageFromURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://restaurantfinder.boxnets.com%@", [avatar[@"thumb"] objectForKey:@"url"]]]];
         }
     }
-    NSArray *locations = cellInfo[@"locations"];
-    if (locations) {
-        NSDictionary *location = [locations firstObject];
-        self.restaurantLocation.text = location[@"phone"];
-    } else {
-        self.restaurantLocation.text = @"";
-    }
+//    NSArray *locations = cellInfo[@"locations"];
+//    if (locations) {
+//        NSDictionary *location = [locations firstObject];
+//        self.restaurantLocation.text = cellInfo[@"phone"];
+//    } else {
+//        self.restaurantLocation.text = @"";
+//    }
     float Rate = 0;
     if (![cellInfo[@"average_rating"] isKindOfClass:[NSNull class]]) {
         Rate = [cellInfo[@"average_rating"] floatValue];

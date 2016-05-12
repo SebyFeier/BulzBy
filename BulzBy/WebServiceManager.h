@@ -41,5 +41,6 @@ typedef void(^ArrayAndErrorCompletionBlock)(NSArray *array, NSError *error);
 
 - (void)contactOwnerWithUsername:(NSString *)username email:(NSString *)email phone:(NSString *)phone message:(NSString *)message withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
 
+- (void)getCitiesFromCountry:(NSNumber *)countryId withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
 
 @end

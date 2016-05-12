@@ -10,6 +10,8 @@
 		E0AEDDB7F19F10FDB902BE79 /* libPods-BulzBy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52414C71C535F56F41D25C9D /* libPods-BulzBy.a */; };
 		F103CE1E1CCAB0700084AF6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F103CE201CCAB0700084AF6D /* Localizable.strings */; };
 		F10751A91CCA90AD00AC1657 /* UILabel+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = F10751A81CCA90AD00AC1657 /* UILabel+Image.m */; };
+		F1186F271CE50898009220D6 /* LocationsCitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1186F261CE50898009220D6 /* LocationsCitiesViewController.m */; };
+		F1186F2A1CE508AB009220D6 /* SelectionStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1186F291CE508AB009220D6 /* SelectionStep2ViewController.m */; };
 		F127D8311CCB5B0A00A09F01 /* AttachementCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F127D8301CCB5B0A00A09F01 /* AttachementCollectionViewCell.m */; };
 		F127D8341CCB74CB00A09F01 /* PhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F127D8331CCB74CB00A09F01 /* PhotoGalleryViewController.m */; };
 		F127D8371CCB76CB00A09F01 /* PhotoGalleryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F127D8361CCB76CB00A09F01 /* PhotoGalleryCollectionViewCell.m */; };
@@ -73,6 +75,10 @@
 		F103CE1F1CCAB0700084AF6D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F10751A71CCA90AD00AC1657 /* UILabel+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Image.h"; sourceTree = "<group>"; };
 		F10751A81CCA90AD00AC1657 /* UILabel+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Image.m"; sourceTree = "<group>"; };
+		F1186F251CE50898009220D6 /* LocationsCitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsCitiesViewController.h; sourceTree = "<group>"; };
+		F1186F261CE50898009220D6 /* LocationsCitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsCitiesViewController.m; sourceTree = "<group>"; };
+		F1186F281CE508AB009220D6 /* SelectionStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionStep2ViewController.h; sourceTree = "<group>"; };
+		F1186F291CE508AB009220D6 /* SelectionStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionStep2ViewController.m; sourceTree = "<group>"; };
 		F127D82F1CCB5B0A00A09F01 /* AttachementCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachementCollectionViewCell.h; sourceTree = "<group>"; };
 		F127D8301CCB5B0A00A09F01 /* AttachementCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachementCollectionViewCell.m; sourceTree = "<group>"; };
 		F127D8321CCB74CB00A09F01 /* PhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGalleryViewController.h; sourceTree = "<group>"; };
@@ -237,10 +243,14 @@
 				F1F829B21CC3E22600166A7E /* ReviewViewController.m */,
 				F1ACF08F1CC6975800C2CA43 /* LocationsViewController.h */,
 				F1ACF0901CC6975800C2CA43 /* LocationsViewController.m */,
+				F1186F251CE50898009220D6 /* LocationsCitiesViewController.h */,
+				F1186F261CE50898009220D6 /* LocationsCitiesViewController.m */,
 				F1ACF0921CC69A3400C2CA43 /* LocationRestaurantsViewController.h */,
 				F1ACF0931CC69A3400C2CA43 /* LocationRestaurantsViewController.m */,
 				F1ACF0951CC6A6F300C2CA43 /* SelectionViewController.h */,
 				F1ACF0961CC6A6F300C2CA43 /* SelectionViewController.m */,
+				F1186F281CE508AB009220D6 /* SelectionStep2ViewController.h */,
+				F1186F291CE508AB009220D6 /* SelectionStep2ViewController.m */,
 				F1BB656D1CC92E9B00C86F48 /* BookingsViewController.h */,
 				F1BB656E1CC92E9B00C86F48 /* BookingsViewController.m */,
 				F127D8321CCB74CB00A09F01 /* PhotoGalleryViewController.h */,
@@ -519,6 +529,7 @@
 				F14F92FB1CC5433200A57404 /* UIView+Borders.m in Sources */,
 				F1DD8F231CBFF5B0002B5411 /* ViewController.m in Sources */,
 				F1B176E11CD3DC6A003082D4 /* EmailViewController.m in Sources */,
+				F1186F271CE50898009220D6 /* LocationsCitiesViewController.m in Sources */,
 				F1DD8F201CBFF5B0002B5411 /* AppDelegate.m in Sources */,
 				F1F829B31CC3E22600166A7E /* ReviewViewController.m in Sources */,
 				F127D8311CCB5B0A00A09F01 /* AttachementCollectionViewCell.m in Sources */,
@@ -526,6 +537,7 @@
 				F1DD8F591CC00C57002B5411 /* WebServiceManager.m in Sources */,
 				F1BB656C1CC92D7B00C86F48 /* BookingTableViewCell.m in Sources */,
 				F1DD8F501CBFFD5E002B5411 /* HomeTableViewCell.m in Sources */,
+				F1186F2A1CE508AB009220D6 /* SelectionStep2ViewController.m in Sources */,
 				F1B176DE1CD3D7E3003082D4 /* WebViewViewController.m in Sources */,
 				F1DD8F1D1CBFF5B0002B5411 /* main.m in Sources */,
 				F127D8371CCB76CB00A09F01 /* PhotoGalleryCollectionViewCell.m in Sources */,
